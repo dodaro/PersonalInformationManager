@@ -34,7 +34,7 @@ public class HomeController {
 		
 		PwdGen mypass = context.getBean("passGen", PwdGen.class);
 		
-		logger.info("Generated password: " + mypass);
+		logger.info("Generated password: " + mypass.onlyletters());
 		return "home";
 	}
 	

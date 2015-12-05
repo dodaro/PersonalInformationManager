@@ -9,10 +9,10 @@ public class PwdGen {
 	public PwdGen() {
 	}
 
-	public String onlyletters() {
+	public String onlylettersandnumbers() {
 		StringBuffer buffer = new StringBuffer();
 		int length = (int) ((Math.random()*46)+4);
-		String allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890";
 		char[] alphabet = allowedCharacters.toCharArray();
 
 		for (int i = 0; i < length; i++) {
@@ -23,6 +23,21 @@ public class PwdGen {
 		return password;
 	}
 
+	public String onlyletters() {
+		StringBuffer buffer = new StringBuffer();
+		int length = (int) ((Math.random()*50)+4);
+		String allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		char[] alphabet = allowedCharacters.toCharArray();
+
+		for (int i = 0; i < length; i++) {
+			buffer.append(alphabet[random.nextInt(alphabet.length)]);
+		}
+
+		password = buffer.toString();
+		return password;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "password: " + password;

@@ -7,11 +7,6 @@
 <meta charset="utf-8">
 <title>Login Page</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/style/styleEa.css">
-<link rel="stylesheet" type="text/css" href="/resources/lib/jquery-ui-1.11.4/jquery-ui.css">
-<script src="/resources/lib/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
-<script src="/resources/lib/jquery-ui-1.11.4/jquery-ui.js"></script>
-
 <link type="text/css" href="/resources/jquery-ui-ea/jquery-ui.css" rel="stylesheet">
 <link type="text/css" href="/resources/style/normalize.css" rel="stylesheet">
 <link type="text/css" href="/resources/style/styleNew.css" rel="stylesheet">

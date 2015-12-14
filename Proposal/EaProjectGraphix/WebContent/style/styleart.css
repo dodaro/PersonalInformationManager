@@ -1,0 +1,127 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  padding-bottom: 50px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+
+.container .text-muted {
+  margin: 15px 0;
+}
+
+.footer > .container {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.jumbotron h1 {
+	margin-top: -15px;
+	text-align: center;
+	font-size: 50px
+}
+
+.jumbotron {
+	margin-top: 0px;
+}
+
+.jumbotron .list-group-item{
+	align-content: center;
+}
+
+.jumbotron ul{
+	padding-left: 30px;
+}	
+
+#main {
+	margin-top: -20px;
+	padding-right: 0px;
+	padding-left: 0px;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+}
+
+@media (min-width: 768px) {
+	#main {
+		max-width: 797px;
+	}
+}
+
+/*Login Page Customization*/
+
+.form-signin {
+  max-width: 90%;
+	padding: auto;
+	margin: 10px auto;
+/*	border: 1px solid green;*/
+}
+
+#titlelogin {
+	margin-bottom: 30px;
+}
+/*
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin: 20px auto;
+	text-align: center
+}
+*/
+/*
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+*/
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+
+.form-signin input[type="email"] {
+  margin-bottom: 0px;
+  border-radius: 5px;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 0px;
+  border-radius: 5px;
+}
+
+/*
+.form-signin button {
+	margin-top: 90px;
+}
+*/
+
+
+#registertitle {
+	margin-bottom: 25px; 
+}

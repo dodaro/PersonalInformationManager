@@ -1,72 +1,107 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page session="false" contentType="text/html; charset=UTF-8"%>
-<!doctype html>
-<html lang="us">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<title>Login Page</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>EaKeyring Home Page</title>
 
-<link type="text/css" href="/resources/jquery-ui-ea/jquery-ui.css" rel="stylesheet">
-<link type="text/css" href="/resources/style/normalize.css" rel="stylesheet">
-<link type="text/css" href="/resources/style/styleNew.css" rel="stylesheet">
-<script type="text/javascript" src="/resources/lib/jquery-ui-ea/external/jquery/jquery.js"></script>
-<script type="text/javascript" src="/resources/lib/jquery-ui-ea/jquery-ui.js"></script>
-<script type="text/javascript" src="/resources/js/scripts.js"></script>
+	<!-- Bootstrap -->
+	<link href="/resources/lib/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/resources/style/stylecolors.css" rel="stylesheet">
+	<link href="/resources/style/styleart.css" rel="stylesheet">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 <body>
-	<header>
-		<div class="banner">
-			<img src="/resources/images/logo_unical.png" alt="Logo" />
-			<div>Personal Information Manager</div>
-		</div>
-	</header>
-	<div class="wrapper">
-		<div class="front-page">
-			<div class="center">
-				<div class="front-welcome">
-					<div class="front-welcome-text">
-								<h1>Welcome on Idontknow.</h1>
-						<div class="front-information-text">
-								<p>Project Developed by:</p>
-								Me<br>
-								You<br>
-								Him<br>
-								Him
-						</div>
-					</div>
-				</div>
-					<div class="front-signin">
-						<form class="loginform" action="#">
-							<div class="username">
-								<input class="text-field" type="text" name="username" placeholder="Username"/>
-							</div>
-							<div class="password">
-								<input class="text-field" type="password" name="password" placeholder="Password"/>
-								<a class="forgot" href="#">forgot your password?</a>
-							</div>
-							<div class="loginbutton">
-								<input class="login" type="submit" value="login"/>
-							</div>
-							<div class="rememberforgot"> 
-								<input type="checkbox" id="check" name="checkbox"> 
-								<label for="checkbox">Remember</label>
-							 </div>
-						</form>
-					</div> 
-					<div class="front-register">
-						<div class="text-register">
-							If you want to register a new account click on the button below:
-						</div>
-							<div class="register-button">
-								<button class="register">register</button>
-							</div>
-						
-					</div>
-				
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse" 
+								data-target="#navbar" aria-expanded="false" 
+								aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" height="30px" src="/resources/img/logoV1.png">
+				</a>
 			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+            <li><a href="#about">About</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" placeholder="Email" 
+									 class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="password" placeholder="Password" 
+									 class="form-control">
+					</div>
+					<button type="submit" class="btn btn-primary">
+						Log in
+					</button>
+					<button type="button" class="btn btn-primary">
+						Register
+					</button>
+				</form>
+			</div>
+			<!--/.navbar-collapse -->
 		</div>
-	</div>
+	</nav>
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div id="main" class="container">
+		<img src="/resources/img/bannerV2.png" class="img-responsive"
+				 alt="Responsive image">
+		<div class="jumbotron">
+			<h1>Welcome</h1>
+				<p>This is a project made in the EA Course developed
+						by:
+				</p>
+					<ul class="list-unstyled">
+						<li>Me</li>
+						<li>You</li>
+						<li>Somebody</li>
+						<li>Everybody</li>
+					</ul>
+		</div> 
+				<!--	jambotron-->
+		<hr>
+	</div> 	 
+				<!--	/container -->
+<!--
+	<div class="container">
+		 Example row of columns 
+		<hr>
+		</div>	
+-->
+	<!-- /container -->
+
+		<footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
+	
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="/resources/bootstrap3/jquery/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/resources/bootstrap3/js/bootstrap.min.js"></script>
 </body>
 </html>

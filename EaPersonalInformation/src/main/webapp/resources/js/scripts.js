@@ -1,3 +1,7 @@
-$(document).ready(function() {
-	$( "input[type=submit], .register" ).button();
-}); 
+$(document).ready(function () {
+	$('.input-group.date').datepicker({
+		format: "dd/mm/yyyy",
+		startView: 2,
+		autoclose: true
+	});
+});

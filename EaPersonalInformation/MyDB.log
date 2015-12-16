@@ -1,0 +1,5 @@
+/*C4*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+drop table user if exists
+create table user (username varchar(20) not null, age integer not null check (age>=18 AND age<=130), dateOfBirth date not null, email varchar(200) not null, password varchar(50) not null, primary key (username))

@@ -55,9 +55,7 @@
 					<button type="submit" class="btn btn-primary">
 						Log in
 					</button>
-					<button type="button" class="btn btn-primary">
-						Register
-					</button>
+					<a class="btn btn-primary" href="/registration">Register</a>
 				</form>
 			</div>
 			<!--/.navbar-collapse -->
@@ -100,8 +98,8 @@
 	
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/resources/bootstrap3/jquery/jquery.min.js"></script>
+	<script src="/resources/lib/bootstrap3/jquery/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/resources/bootstrap3/js/bootstrap.min.js"></script>
+	<script src="/resources/lib/bootstrap3/js/bootstrap.min.js"></script>
 </body>
 </html>

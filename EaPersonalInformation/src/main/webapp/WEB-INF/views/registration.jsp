@@ -15,7 +15,7 @@
 	<link href="/resources/lib/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/resources/style/stylecolors.css" rel="stylesheet">
 	<link href="/resources/style/styleart.css" rel="stylesheet">
-	<link href="/resources/bootstrap3/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+	<link href="/resources/lib/bootstrap3/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -49,7 +49,7 @@
 	</nav>
 
 	<div id="main" class="container">
-		<img src="img/bannerV2.png" class="img-responsive" alt="Responsive image">
+		<img src="/resources/img/bannerV2.png" class="img-responsive" alt="Responsive image">
 		<h2 id="titlelogin" class="text-center">Register here</h2>
 		<form class="form-register">
 			<div class="form-group col-md-6">
@@ -95,7 +95,7 @@
 				<input type="tel" id="phoneNumber" class="form-control"
 							 placeholder="Phone Number" required>
 			</div>
-				<div class="form-group col-md-3">
+				<div class="form-group col-xs-6 col-md-3">
 					<label for="gender">Gender</label>
 					<select id="gender" class="form-control">
 						<option>Male</option>
@@ -123,7 +123,7 @@
 						</div>
 			</div>
 -->				
-			<div class="form-group col-md-3">
+			<div class="form-group col-xs-6 col-md-3">
 				<label for="phone">I dont konw</label>
 				<input type="tel" id="phoneNumber" class="form-control"
 							 placeholder="Phone Number">
@@ -131,7 +131,7 @@
 			<div class="form-group col-md-6">
 				<label for="birthDate">Birth Date</label>
 				<div class="input-group date">
-    			<input type="text" id="birthDate" class="form-control" 
+    				<input type="text" id="birthDate" class="form-control" 
 							 placeholder="Birth Date">
 					<span class="input-group-addon">
 						<i class="glyphicon glyphicon-calendar"></i>
@@ -177,10 +177,11 @@
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/resources/bootstrap3/jquery/jquery.min.js"></script>
+	<script src="/resources/lib/bootstrap3/jquery/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/resources/bootstrap3/js/bootstrap.min.js"></script>
-	<script src="bootstrap3/datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="/resources/lib/bootstrap3/js/bootstrap.min.js"></script>
+	<script src="/resources/lib/bootstrap3/datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="/resources/lib/bootstrap3/datepicker/locales/bootstrap-datepicker.it.min.js"></script>
+	<script src="/resources/js/scripts.js"></script>
 </body>
 </html>

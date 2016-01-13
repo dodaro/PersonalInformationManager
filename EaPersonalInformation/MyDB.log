@@ -1,5 +1,7 @@
 /*C4*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C5*/SET SCHEMA PUBLIC
-drop table user if exists
-create table user (username varchar(20) not null, age integer not null check (age>=18 AND age<=130), dateOfBirth date not null, email varchar(200) not null, password varchar(50) not null, primary key (username))
+drop table users if exists
+create table users (email varchar(50) not null, confirmEmail varchar(50) not null, confirmPassword varchar(50), creditcard varchar(20), dateOfBirth date not null, firstname varchar(30) not null, gender varchar(6) not null, lastname varchar(30) not null, password varchar(50) not null, phonenumber varchar(20), primary key (email))
+INSERT INTO USERS VALUES('arturog@tiscali.it','arturog@tiscali.it','1111111','11111','2013-05-12','Arturo','Male','Guerrisi','1111111','111111')
+COMMIT

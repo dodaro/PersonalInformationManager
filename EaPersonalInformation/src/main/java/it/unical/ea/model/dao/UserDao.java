@@ -4,7 +4,7 @@ import it.unical.ea.model.User;
 
 public interface UserDao {
 	void create(User u);
-	User retrieve(String username);
+	User retrieveEmail(String username);
 	boolean exists(String username);
 	Long numberOfUsers();
 	void update(User u);

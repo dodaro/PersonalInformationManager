@@ -23,39 +23,33 @@ import it.unical.ea.model.LoginBean;
 import it.unical.ea.model.PwdGen;
 import it.unical.ea.model.User;
 import it.unical.ea.model.dao.UserDao;
-import it.unical.ea.validator.ValidatorUserPassEmail;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class LoginController {
 	
 	@Autowired
 	private WebApplicationContext context;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
-		logger.info("Welcome Password generator & Login", locale);
+		logger.info("Welcome Login Page", locale);
 //		if (!SessionHandler.existsUser(request.getSession()))
 //			return "redirect:/";
 		model.addAttribute("userLogin", new LoginBean());
 		
-		PwdGen mypass = context.getBean("passGen", PwdGen.class);
-		
-		logger.info("Generated password: " + mypass.onlyletters());
-		logger.info("Generated password: " + mypass.onlylettersandnumbers());
-		logger.info("Generated password: " + mypass.LetNumSpecialChar());
-		return "home";
+		return "login";
 	}
 	
-/*	//Order of BindingResult matters (it must be just after ModelAttribute)
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	//Order of BindingResult matters (it must be just after ModelAttribute)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String registrationPost(@Valid @ModelAttribute("userLogin") LoginBean userLogin, BindingResult result, 
 			Model model, HttpServletRequest request) {
 		
@@ -69,6 +63,6 @@ public class HomeController {
 			return "login";
 		} else 
 			return "userhome";
-		}*/
+		}
 	
 }

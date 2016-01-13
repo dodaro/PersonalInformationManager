@@ -48,28 +48,38 @@
 	</nav>
 
 	<div id="main" class="container">
-		<img src="/resources/img/bannerV2.png" class="img-responsive"
+		<img src="/resources/img/bannerV3.png" class="img-responsive"
 			alt="Responsive image">
+		<c:if test="${not empty userexerror}">
+			<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<strong>Error!</strong> Check email address or wrong password.
+		</div>
+		</c:if> 
 		<h2 id="titlelogin" class="text-center">Please sign in</h2>
-		<form class="form-signin">
+		<form:form class="form-signin" action="#" method="POST" commandName="userLogin">
 			<div class="form-group col-md-6">
-				<label for="inputEmail"> Email address </label> <input type="email"
-					id="inputEmail" class="form-control" placeholder="Email address"
-					required autofocus>
+				<label for="inputEmail"> Email address </label> 
+				<form:input path="email" type="email" id="inputEmail" class="form-control"
+								placeholder="Email address" required="true" autofocus="true" /> 
 			</div>
 			<div class="form-group col-md-6">
-				<label for="inputPassword">Password</label> <input type="password"
-					id="inputPassword" class="form-control" placeholder="Password"
-					required>
+				<label for="inputPassword">Password</label> 
+				<form:input path="password" type="password" id="password" class="form-control"
+					placeholder="Password" required="true" /> 
 			</div>
 
 			<button class="btn btn-lg btn-primary center-block" type="submit">
 				Login</button>
-		</form>
-
-		<h2 id="registertitle" class="text-center">Or</h2>
-		<button class="btn btn-success btn center-block" type="button">
-			Register</button>
+		</form:form>
+		<div class="text-center">
+			<h2 id="registertitle">Or</h2>
+			<a class="btn btn-success" href="/registration">
+				Register</a>
+		</div>
 		<hr>
 	</div>
 	<!--	/container -->

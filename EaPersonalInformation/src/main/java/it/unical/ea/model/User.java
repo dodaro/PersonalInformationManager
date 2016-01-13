@@ -8,79 +8,100 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import it.unical.ea.validator.*;
 
+//@FieldMatch.List({
+//    @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
+//    @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
+//})
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	
 	@Id
-	@Column(name="username", nullable=false, length=20)
-	@Size(min=4, max=20)
-	private String username;
+	@Column(name="email", nullable=false, length=50)
+	@Size(max=50)
+	@Email()
+	@NotEmpty()
+	private String email;
+	//@Unique(service = UserService.class, fieldName = "email", message = "Email already exists!!!")
+	
+	
+	@Size(max=50)
+	@Email()
+	@NotEmpty()
+	private String confirmEmail;
+	
+	@Column(name="firstname", nullable=false, length=20)
+	@Size(min=2, max=30)
+	private String firstname;
+	
+	@Column(name="lastname", nullable=false, length=20)
+	@Size(min=2, max=30)
+	private String lastname;
 	
 	@Column(name="password", nullable=false, length=50)
 	@Size(min = 6, max = 50)
 	private String password;
 	
-	@Column(name="email", nullable=false, length=200)
-	@Size(max=200)
-	@Email()
-	@NotEmpty()
-	private String email;
+	@Size(min = 6, max = 50)
+	private String confirmPassword;
+
+	@Column(name="phonenumber", length=20)
+	@Size(min=4, max=20)
+	private String phonenumber;
 	
-	@Column(name="age", nullable=false)	
-	@Min(18) @Max(130)
-	@NotNull
-	private Integer age;
+	@Column(name="gender", nullable=false, length=5)
+	@Size(max=6)
+	private String gender;
 	
 	@Column(name="dateOfBirth", nullable=false)
 	@Temporal(TemporalType.DATE)
 	@NotNull(message="The date of birth must be set")
-	@DateTimeFormat(pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Past()	
-	private Date dateOfBirth;	
+	private Date dateOfBirth;
 	
-	public User(){
-		username = "";
-		password = "";
-		email = "";
-		age = 18;
-		dateOfBirth = null;
-	}
-	
-	public User(String username, String password, String email, Integer age, Date dateOfBirth) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.age = age;
-		this.dateOfBirth = dateOfBirth;  
+	//@CreditCardNumber
+	@Column(name="creditcard", length=20)
+	@Size(min=4, max=20)
+	private String creditcard;
+
+	public User() {
+		this.email = "";
+		this.confirmEmail = "";
+		this.firstname = "";
+		this.lastname = "";
+		this.password = "";
+		this.confirmPassword = "";
+		this.phonenumber = "";
+		this.gender = "";
+		this.dateOfBirth = null;
+		this.creditcard = "";
 	}
 
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
+	public User(String email, String confirmEmail, String firstname, String lastname, String password, String confirmPassword,
+			String phonenumber, String gender, Date dateOfBirth, String creditcard) {
+		this.email = email;
+		this.confirmEmail = confirmEmail;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.phonenumber = phonenumber;
+		this.gender = gender;
+		this.dateOfBirth = dateOfBirth;
+		this.creditcard = creditcard;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -89,25 +110,81 @@ public class User {
 		this.email = email;
 	}
 
-	public Integer getAge() {
-		return age;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
-	
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	
+
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public String getCreditcard() {
+		return creditcard;
+	}
+
+	public void setCreditcard(String creditcard) {
+		this.creditcard = creditcard;
+	}
+	
+	public String getConfirmEmail() {
+		return confirmEmail;
+	}
+
+	public void setConfirmEmail(String confirmEmail) {
+		this.confirmEmail = confirmEmail;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", email=" + email + ", age=" + age
-				+ ", dateOfBirth=" + dateOfBirth + "]";
-	}	
+		return email + ": firstname: " + firstname + ", lastname: " + lastname + ", password: " + password;
+	}
+	
 }

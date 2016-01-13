@@ -43,21 +43,21 @@
 				<ul class="nav navbar-nav">
             <li><a href="#about">About</a></li>
 				</ul>
-				<form:form class="navbar-form navbar-right" action="login" method="POST" commandName="userLogin">
+				<form class="navbar-form navbar-right">
 					<div class="form-group">
-						<form:input type="email" id="email" path="email" placeholder="Email" 
-									 class="form-control" required="true" autofocus="true" />
+						<input type="text" placeholder="Email" 
+									 class="form-control">
 					</div>
 					<div class="form-group">
-						<form:input path="password" id="password" type="password" 
-								placeholder="Password" class="form-control" required="true" />
+						<input type="password" placeholder="Password" 
+									 class="form-control">
 					</div>
 					<button type="submit" class="btn btn-primary">
-						Login
+						Log in
 					</button>
-					<!-- <a class="btn btn-primary" href="/login">Login</a> -->
+					<a class="btn btn-primary" href="/login">Login</a>
 					<a class="btn btn-primary" href="/registration">Register</a>
-				</form:form>
+				</form>
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
@@ -67,21 +67,9 @@
 	<div id="main" class="container">
 		<img src="/resources/img/bannerV3.png" class="img-responsive"
 				 alt="Responsive image">
-		<div class="jumbotron">
 			<h1>Welcome</h1>
-				<p>This is a project made in the EA Course developed
-						by:
+				<p>Home Page!
 				</p>
-					<ul id="autList" class="list-unstyled">
-						<strong>
-							<li>Arturo Guerrisi</li>
-							<li>You</li>
-							<li>Somebody</li>
-							<li>Everybody</li>
-						</strong>
-					</ul>
-		</div> 
-				<!--	jambotron-->
 		<hr>
 	</div> 	 
 				<!--	/container -->

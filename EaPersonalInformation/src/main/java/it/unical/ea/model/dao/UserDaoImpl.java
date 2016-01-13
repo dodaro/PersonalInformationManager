@@ -37,19 +37,19 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User retrieve(String username) {	
+	public User retrieveEmail(String email) {	
 		Session session = dbHandler.getSessionFactory().openSession();
-		String queryString = "from User where username = :user";
+		String queryString = "from User where email = :email";
 		Query query = session.createQuery(queryString);
-		query.setParameter("user", username);
+		query.setParameter("email", email);
 		User u = (User) query.uniqueResult();	
 		session.close();	
 	    return u;
 	}
 	
 	@Override
-	public boolean exists(String username) {
-		return retrieve(username) != null;
+	public boolean exists(String email) {
+		return retrieveEmail(email) != null;
 	}
 
 	@Override

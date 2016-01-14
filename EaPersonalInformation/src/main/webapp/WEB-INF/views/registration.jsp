@@ -12,8 +12,7 @@
 <title>EaKeyring Registration Page</title>
 
 <!-- Bootstrap -->
-<link href="/resources/lib/bootstrap3/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="/resources/lib/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/style/stylecolors.css" rel="stylesheet">
 <link href="/resources/style/styleart.css" rel="stylesheet">
 <link href="/resources/lib/bootstrap3/datepicker/css/bootstrap-datepicker3.min.css"
@@ -217,10 +216,8 @@
 	<script src="/resources/lib/bootstrap3/jquery/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="/resources/lib/bootstrap3/js/bootstrap.min.js"></script>
-	<script
-		src="/resources/lib/bootstrap3/datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script
-		src="/resources/lib/bootstrap3/datepicker/locales/bootstrap-datepicker.it.min.js"></script>
+	<script src="/resources/lib/bootstrap3/datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="/resources/lib/bootstrap3/datepicker/locales/bootstrap-datepicker.it.min.js"></script>
 	<script src="/resources/js/scripts.js"></script>
 </body>
 </html>

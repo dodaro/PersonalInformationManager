@@ -49,10 +49,10 @@ public class User {
 	private String lastname;
 	
 	@Column(name="password", nullable=false, length=50)
-	@Size(min = 6, max = 50)
+	@Size(min = 6, max = 64)
 	private String password;
 	
-	@Size(min = 6, max = 50)
+	@Size(min = 6, max = 64)
 	private String confirmPassword;
 
 	@Column(name="phonenumber", length=20)

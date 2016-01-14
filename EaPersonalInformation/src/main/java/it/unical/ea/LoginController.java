@@ -20,6 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import it.unical.ea.SessionHandler;
 import it.unical.ea.model.LoginBean;
+import it.unical.ea.model.PassHasher;
 import it.unical.ea.model.PwdGen;
 import it.unical.ea.model.User;
 import it.unical.ea.model.dao.UserDao;
@@ -55,7 +56,9 @@ public class LoginController {
 		
 		UserDao userDao = (UserDao) context.getBean("userDao");
 		
-		if (!userDao.exists(userLogin.getEmail()) || !(userDao.retrieveEmail(userLogin.getEmail()).getPassword().equals(userLogin.getPassword()))) {			
+		String encrypted = PassHasher.encryptSHA512(userLogin.getPassword());
+		
+		if (!userDao.exists(userLogin.getEmail()) || !(userDao.retrieveEmail(userLogin.getEmail()).getPassword().equals(encrypted))) {			
 			model.addAttribute("userexerror", "true");			
 			return "login";
 		}

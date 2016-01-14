@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 
+import it.unical.ea.model.PassHasher;
 import it.unical.ea.model.User;
 import it.unical.ea.model.dao.UserDao;
 import it.unical.ea.validator.ValidatorUserPassEmail;
@@ -74,6 +75,11 @@ public class RegistrationController {
 		System.out.println("3 " + userReg.getLastname());
 		System.out.println("4 " + userReg.getPassword());
 		System.out.println("5 " + userReg.getDateOfBirth());
+		
+		String encrypted = PassHasher.encryptSHA512(userReg.getPassword());
+		userReg.setPassword(encrypted);
+		
+		logger.info("Password Encrypted " + encrypted);
 		
 		UserDao userDao = (UserDao) context.getBean("userDao");
 		if (userDao.exists(userReg.getEmail())) {

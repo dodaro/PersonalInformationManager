@@ -43,7 +43,18 @@
 				<ul class="nav navbar-nav">
             <li><a href="#about">About</a></li>
 				</ul>
-			<a class="btn btn-primary navbar-btn navbar-right" href="/logout">Logout</a>
+				<form:form class="navbar-form navbar-right" action="login" method="POST" commandName="userLogin">
+					<div class="form-group">
+						<form:input type="email" id="email" path="email" placeholder="Email" 
+									 class="form-control" required="true" autofocus="true" />
+					</div>
+					<div class="form-group">
+						<form:input path="password" id="password" type="password" 
+								placeholder="Password" class="form-control" required="true" />
+					</div>
+					<button type="submit" class="btn btn-primary"> Login </button>
+					<a class="btn btn-primary" href="/registration">Register</a>
+				</form:form>
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
@@ -53,9 +64,11 @@
 	<div id="main" class="container">
 		<img src="/resources/img/bannerV3.png" class="img-responsive"
 				 alt="Responsive image">
-			<h1>Welcome ${username}</h1>
-				<p>Home Page!
-				</p>
+		<div class="jumbotron">
+			<h1>Logged out</h1>
+		
+		</div> 
+				<!--	jambotron-->
 		<hr>
 	</div> 	 
 				<!--	/container -->

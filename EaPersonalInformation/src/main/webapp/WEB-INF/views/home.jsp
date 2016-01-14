@@ -52,10 +52,7 @@
 						<form:input path="password" id="password" type="password" 
 								placeholder="Password" class="form-control" required="true" />
 					</div>
-					<button type="submit" class="btn btn-primary">
-						Login
-					</button>
-					<!-- <a class="btn btn-primary" href="/login">Login</a> -->
+					<button type="submit" class="btn btn-primary"> Login </button>
 					<a class="btn btn-primary" href="/registration">Register</a>
 				</form:form>
 			</div>

@@ -81,9 +81,8 @@ public class RegistrationController {
 			return "registration";
 		} else {
 			userDao.create(userReg);
-			return "registration";
+			return "redirect:/";
 		}
-//		userDao.create(userReg);
-//		return "registration";
+
 	}
 }

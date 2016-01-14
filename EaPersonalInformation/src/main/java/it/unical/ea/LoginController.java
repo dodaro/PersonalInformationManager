@@ -53,16 +53,27 @@ public class LoginController {
 	public String registrationPost(@Valid @ModelAttribute("userLogin") LoginBean userLogin, BindingResult result, 
 			Model model, HttpServletRequest request) {
 		
-		
 		UserDao userDao = (UserDao) context.getBean("userDao");
-		User user = userDao.retrieveEmail(userLogin.getEmail());
 		
-		if ((user == null) || (user.getPassword() != userLogin.getPassword()) ) {
-			model.addAttribute("userLogin", new LoginBean());
-			model.addAttribute("userexerror", "true");
+		if (!userDao.exists(userLogin.getEmail()) || !(userDao.retrieveEmail(userLogin.getEmail()).getPassword().equals(userLogin.getPassword()))) {			
+			model.addAttribute("userexerror", "true");			
 			return "login";
-		} else 
-			return "userhome";
 		}
+		request.getSession().setAttribute("user", userLogin.getEmail());		
+		
+		
+		return "redirect:/userhome";
+		
+		
+//		if (userLogin.getEmail().equals(user.getEmail()) && userLogin.getPassword().equals(user.getPassword())) {
+//			request.getSession().setAttribute("userSession", userLogin.getEmail());
+//			return "redirect:/userhome";
+//		} else {
+//			model.addAttribute("userexerror", "true");
+//			model.addAttribute("userLogin", new LoginBean());
+//			return "login";
+//		}
+		
 	
+	}
 }

@@ -42,8 +42,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		logger.info("Welcome Password generator & Login", locale);
-//		if (!SessionHandler.existsUser(request.getSession()))
-//			return "redirect:/";
+
 		model.addAttribute("userLogin", new LoginBean());
 		
 		PwdGen mypass = context.getBean("passGen", PwdGen.class);

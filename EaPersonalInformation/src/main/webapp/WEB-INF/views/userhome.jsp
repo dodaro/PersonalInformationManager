@@ -11,14 +11,21 @@
 <title>EaKeyring Home Page</title>
 
 <!-- Bootstrap -->
-<link href="/resources/lib/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/lib/bootstrap3/css/bootstrap.min.css"
+	rel="stylesheet">
 <link href="/resources/style/stylecolors.css" rel="stylesheet">
 <link href="/resources/style/styleart.css" rel="stylesheet">
+<link href="/resources/style/social-buttons-3.css" rel="stylesheet">
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+	rel="stylesheet">
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        
     <![endif]-->
 
 </head>
@@ -54,33 +61,85 @@
 		<h1>Welcome ${username}</h1>
 		<div class="row clearfix">
 			<div class="col-md-12 column">
-				<table class="table table-bordered table-hover" id="tab_logic">
-					<thead>
-						<tr>
-							<th class="text-center">#</th>
-							<th class="text-center">Account type</th>
-							<th class="text-center">Username/Mail</th>
-							<th class="text-center">Password</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr id='addr0'>
-							<td>1</td>
-							<td><input type="text" name='name0' placeholder='Name'
-								class="form-control" /></td>
-							<td><input type="text" name='mail0' placeholder='Mail'
-								class="form-control" /></td>
-							<td><input type="text" name='mobile0' placeholder='Mobile'
-								class="form-control" /></td>
-						</tr>
-						<tr id='addr1'></tr>
-					</tbody>
-				</table>
+				
 			</div>
 		</div>
-		<a id="add_row" class="btn btn-default pull-left">Add Row</a>
-		<a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+		<button type="button" class="btn btn-default pull-left"
+			data-toggle="modal" data-target="#myModal">Add Account</button>
+
+		<a id='delete_row' class="pull-right btn btn-default">Delete
+			Account</a>
+
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog ">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modal Header</h4>
+					</div>
+					<div class="modal-body">
+						<!--  <a id="add_row" class="btn btn-default pull-right">Add Row</a>-->
+						<p>Add Your Account Here</p>
+						<!--	/container -->
+						<div id="contact_page">
+							<div class="container">
+								<div class="row">
+									<div class="form-group col-md-6">
+										<label for="usr">URL:</label> <input type="text"
+											class="form-control" id="usr">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-3">
+										<label for="usr">Username:</label> <input type="text"
+											class="form-control" id="usr">
+									</div>
+									<div class="form-group col-md-3">
+										<label for="pwd">Password:</label> <input type="password"
+											class="form-control" id="pwd">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-3">
+										<label for="usr">Name of Account:</label> <input type="text"
+											class="form-control" id="usr">
+									</div>
+								</div>
+
+
+								<div class="form-horizontal">
+									<div class="form-group">
+										<div class="col-md-6">
+											<textarea class="form-control" rows="3"
+												placeholder="Notes" required></textarea>
+										</div>
+									</div>
+								</div>
+						
+						<button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						
+							</div>
+						</div>
+					</div>
+
+
+					<!--  <a class="btn btn-social-icon btn-twitter">
+  <span class="fa fa-twitter"></span>
+</a>
+      -->
+				</div>
+				<div class="modal-footer">
+					
+				</div>
+			</div>
+
+		</div>
 	</div>
+
+
 	<!--	/container -->
 	<!--
 	<div class="container">
@@ -99,10 +158,10 @@
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/resources/lib/bootstrap3/jquery/jquery.min.js"></script>
-	
+
 	<script src="/resources/js/scriptuserhome.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="/resources/lib/bootstrap3/js/bootstrap.min.js"></script>
-	
+
 </body>
 </html>

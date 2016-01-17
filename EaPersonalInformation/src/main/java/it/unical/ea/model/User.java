@@ -39,7 +39,7 @@ public class User {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name="email", nullable=false, length=50)
+	@Column(name="email", unique = true, nullable=false, length=50)
 	@Size(max=50)
 	@Email()
 	@NotEmpty()

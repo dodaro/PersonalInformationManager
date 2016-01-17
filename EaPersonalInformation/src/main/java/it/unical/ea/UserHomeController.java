@@ -1,6 +1,7 @@
 package it.unical.ea;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
@@ -27,6 +28,7 @@ import it.unical.ea.model.LoginBean;
 import it.unical.ea.model.PassHasher;
 import it.unical.ea.model.PwdGen;
 import it.unical.ea.model.User;
+import it.unical.ea.model.dao.AccountDao;
 import it.unical.ea.model.dao.UserDao;
 import it.unical.ea.validator.ValidatorUserPassEmail;
 
@@ -69,6 +71,7 @@ public class UserHomeController {
 		String userEmail = (String) session.getAttribute("user");
 		if (userEmail == null)
 			return "redirect:/";
+		List<Account> myAccounts;
 		
 		logger.info("User email " + userEmail);
 		User user = userDao.retrieveEmail(userEmail);
@@ -102,19 +105,30 @@ public class UserHomeController {
 		System.out.println("4 " + accountNew.getPassword());
 		System.out.println("5 " + accountNew.getNotes());
 		
-		model.addAttribute("css", "success");
-		model.addAttribute("msg", "Account addedd.");
 		
-//		UserDao userDao = (UserDao) context.getBean("userDao");
-//		if (userDao.exists(userReg.getEmail())) {
-//			model.addAttribute("userexerror", "true");
-//			return "registration";
-//		} else {
-//			userDao.create(userReg);
-//			return "redirect:/";
-//		}
+		accountNew.setUser(user);
+		AccountDao accountDao = (AccountDao) context.getBean("accountDao");
 		
-		return "userhome";
+		
+		if (accountDao.exists(accountNew.getAccountname())) {
+			model.addAttribute("css", "danger");
+			model.addAttribute("msg", "Account Name already exists. Please change account name.");
+			return "userhome";
+		} else {
+			accountDao.create(accountNew);
+			model.addAttribute("css", "success");
+			model.addAttribute("msg", "Account addedd correctly.");
+			model.addAttribute("accountForm", new Account());
+			
+			myAccounts = userDao.getAccounts(user);
+			logger.info("Account Query");
+			for (Account temp : myAccounts) {
+				System.out.println(temp);
+			}
+			return "userhome";
+		}
+		
+		
 
 	}
 	

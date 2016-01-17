@@ -7,8 +7,9 @@ import org.hibernate.Session;
 
 import it.unical.ea.model.Account;
 import it.unical.ea.model.DBHandler;
+import it.unical.ea.model.User;
 
-public class AccountDAOImpl implements AccountDAO {
+public class AccountDaoImpl implements AccountDao {
 	
 	private DBHandler dbHandler;
 	
@@ -20,7 +21,7 @@ public class AccountDAOImpl implements AccountDAO {
 		this.dbHandler = dbHandler;
 	}
 	
-	public AccountDAOImpl() {
+	public AccountDaoImpl() {
 	}
 
 	@Override
@@ -55,6 +56,18 @@ public class AccountDAOImpl implements AccountDAO {
 		return accounts;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Account> getUserAccounts(User user) {
+		Session session = dbHandler.getSessionFactory().openSession();
+		String queryString = "from Account where user = :user";
+		Query query = session.createQuery(queryString);
+		query.setParameter("user", user);
+		List<Account> accounts = (List<Account>) query.list();
+		session.close();
+		return accounts;
+	}
+	
 	
 	@Override
 	public Account get(Integer id) {
@@ -68,14 +81,19 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 	
 	@Override
-	public Account get(String username) {	
+	public Account getAccount(String accountname) {	
 		Session session = dbHandler.getSessionFactory().openSession();
-		String queryString = "from Account where username = :username";
+		String queryString = "from Account where accountname = :accountname";
 		Query query = session.createQuery(queryString);
-		query.setParameter("username", username);
+		query.setParameter("accountname", accountname);
 		Account a = (Account) query.uniqueResult();	
 		session.close();	
 	    return a;
+	}
+	
+	@Override
+	public boolean exists(String accountname) {
+		return getAccount(accountname) != null;
 	}
 	
 }

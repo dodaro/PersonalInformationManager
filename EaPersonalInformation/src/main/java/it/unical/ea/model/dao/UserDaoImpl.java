@@ -1,8 +1,11 @@
 package it.unical.ea.model.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import it.unical.ea.model.Account;
 import it.unical.ea.model.DBHandler;
 import it.unical.ea.model.User;
 
@@ -50,6 +53,19 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean exists(String email) {
 		return retrieveEmail(email) != null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Account> getAccounts(User user) {
+		Session session = dbHandler.getSessionFactory().openSession();
+		String queryString = "from User u where u.id = :userid";
+		Query query = session.createQuery(queryString);
+		query.setParameter("userid", user.getId());
+		User userlocal = (User)query.uniqueResult();
+		List<Account> accounts = (List<Account>) userlocal.getAccounts();
+		session.close();
+		return accounts;
 	}
 
 	@Override

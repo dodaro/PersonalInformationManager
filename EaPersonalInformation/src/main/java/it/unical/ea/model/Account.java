@@ -20,7 +20,7 @@ public class Account {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name="accountname", nullable=false, length=20)
+	@Column(name="accountname", unique = true, nullable=false, length=20)
 	@Size(min=2, max=30)
 	private String accountname;
 

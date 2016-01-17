@@ -34,6 +34,10 @@
    <bean id="userDao" class="it.unical.ea.model.dao.UserDaoImpl" >
       <property name="dbHandler" ref="dbHandler" />
   </bean>
+
+  <bean id="accountDao" class="it.unical.ea.model.dao.AccountDaoImpl" >
+      <property name="dbHandler" ref="dbHandler" />
+  </bean>
   
   <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
       <property name="sessionFactory" ref="sessionFactory" />

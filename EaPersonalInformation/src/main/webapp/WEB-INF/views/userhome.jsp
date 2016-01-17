@@ -48,6 +48,11 @@
 				<ul class="nav navbar-nav">
 					<li><a href="#about">About</a></li>
 				</ul>
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary navbar-btn" 
+						data-toggle="modal" data-target="#myModal">
+		  				Add Account
+				</button>
 				<a class="btn btn-primary navbar-btn navbar-right" href="/logout">Logout</a>
 			</div>
 			<!--/.navbar-collapse -->
@@ -58,85 +63,78 @@
 	<div id="main" class="container">
 		<img src="/resources/img/bannerV3.png" class="img-responsive"
 			alt="Responsive image">
-		<h1>Welcome ${username}</h1>
-		<div class="row clearfix">
-			<div class="col-md-12 column">
-				
-			</div>
+		<div class="text-center">
+			<h1>Welcome ${username}</h1>
 		</div>
-		<button type="button" class="btn btn-default pull-left"
-			data-toggle="modal" data-target="#myModal">Add Account</button>
-
-		<a id='delete_row' class="pull-right btn btn-default">Delete
-			Account</a>
-
-		<div id="myModal" class="modal fade" role="dialog">
-			<div class="modal-dialog ">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Modal Header</h4>
+		<c:if test="${not empty msg}">
+		    <div class="alert alert-${css} alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" 
+                                aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<strong>${msg}</strong>
+			<br />
+			<spring:hasBindErrors name="accountForm">
+				<c:forEach var="error" items="${errors.allErrors}">
+					<b><spring:message message="${error}" /></b>
+					<br />
+				</c:forEach>
+    		</spring:hasBindErrors>
+		    </div>
+		</c:if>
+		 
+		<form:form method="POST" commandName="accountForm">
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Add New Account</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="row">
+	        		<div class="form-group col-md-3">
+						<label class="control-label" for="accname">Name of Account:</label> 
+						<form:input type="text" path="accountname" class="form-control" id="accname" 
+							required="true" autofocus="true" />
 					</div>
-					<div class="modal-body">
-						<!--  <a id="add_row" class="btn btn-default pull-right">Add Row</a>-->
-						<p>Add Your Account Here</p>
-						<!--	/container -->
-						<div id="contact_page">
-							<div class="container">
-								<div class="row">
-									<div class="form-group col-md-6">
-										<label for="usr">URL:</label> <input type="text"
-											class="form-control" id="usr">
-									</div>
-								</div>
-								<div class="row">
-									<div class="form-group col-md-3">
-										<label for="usr">Username:</label> <input type="text"
-											class="form-control" id="usr">
-									</div>
-									<div class="form-group col-md-3">
-										<label for="pwd">Password:</label> <input type="password"
-											class="form-control" id="pwd">
-									</div>
-								</div>
-								<div class="row">
-									<div class="form-group col-md-3">
-										<label for="usr">Name of Account:</label> <input type="text"
-											class="form-control" id="usr">
-									</div>
-								</div>
-
-
-								<div class="form-horizontal">
-									<div class="form-group">
-										<div class="col-md-6">
-											<textarea class="form-control" rows="3"
-												placeholder="Notes" required></textarea>
-										</div>
-									</div>
-								</div>
-						
-						<button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						
-							</div>
+						<%-- <div class="form-group col-xs-6 col-md-3 ${status.error ? 'has-error' : ''}"> --%>
+					<div class="form-group col-md-3">
+						<label class="control-label" for="type">Account type</label> 
+						<form:select path="type" id="type" class="form-control">
+							<form:option value="facebook">Facebook</form:option>
+							<form:option value="twitter">Twitter</form:option>
+						</form:select> 
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label class="control-label" for="usr">Username:</label> 
+						<form:input path="username" type="text" class="form-control" id="usr" />
+					</div>
+					<div class="form-group col-md-3">
+						<label for="pwd">Password:</label> 
+						<form:input path="password" type="password" class="form-control" id="pwd" />
+					</div>
+				</div>
+				<div class="form-horizontal">
+					<div class="form-group">
+						<div class="col-md-6">
+							<form:textarea path="notes" class="form-control" rows="3" placeholder="Notes" />
 						</div>
 					</div>
-
-
-					<!--  <a class="btn btn-social-icon btn-twitter">
-  <span class="fa fa-twitter"></span>
-</a>
-      -->
 				</div>
-				<div class="modal-footer">
-					
-				</div>
-			</div>
-
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <input type="submit" class="btn btn-primary" value="Save" /> 
+		      </div>
+		    </div>
+		  </div>
 		</div>
+		</form:form>
+		
 	</div>
 
 

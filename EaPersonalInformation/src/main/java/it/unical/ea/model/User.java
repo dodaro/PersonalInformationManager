@@ -1,10 +1,16 @@
 package it.unical.ea.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -12,6 +18,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -27,13 +35,16 @@ import it.unical.ea.validator.*;
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Integer id;
+	
 	@Column(name="email", nullable=false, length=50)
 	@Size(max=50)
 	@Email()
 	@NotEmpty()
 	private String email;
 	//@Unique(service = UserService.class, fieldName = "email", message = "Email already exists!!!")
-	
 	
 	@Size(max=50)
 	@Email()
@@ -74,8 +85,13 @@ public class User {
 	@Column(name="creditcard", length=20)
 	@Size(min=4, max=20)
 	private String creditcard;
+	
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private List<Account> accounts;
 
 	public User() {
+		this.id = 0;
 		this.email = "";
 		this.confirmEmail = "";
 		this.firstname = "";
@@ -86,10 +102,12 @@ public class User {
 		this.gender = "";
 		this.dateOfBirth = null;
 		this.creditcard = "";
+		this.accounts = new ArrayList<Account>();
 	}
 
-	public User(String email, String confirmEmail, String firstname, String lastname, String password, String confirmPassword,
+	public User(Integer id, String email, String confirmEmail, String firstname, String lastname, String password, String confirmPassword,
 			String phonenumber, String gender, Date dateOfBirth, String creditcard) {
+		this.id = id;
 		this.email = email;
 		this.confirmEmail = confirmEmail;
 		this.firstname = firstname;
@@ -100,6 +118,7 @@ public class User {
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.creditcard = creditcard;
+		this.accounts = new ArrayList<Account>();
 	}
 
 	public String getEmail() {
@@ -182,9 +201,26 @@ public class User {
 		this.confirmPassword = confirmPassword;
 	}
 	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
 	@Override
 	public String toString() {
-		return email + ": firstname: " + firstname + ", lastname: " + lastname + ", password: " + password;
+		return email;
 	}
 	
 }

@@ -25,7 +25,7 @@
       </property>
   </bean>
   
-  <bean id="passGen" class="it.unical.ea.model.PwdGen" /> 
+  <bean id="pwdGen" class="it.unical.ea.model.PwdGen" /> 
   
   <bean id="dbHandler" class="it.unical.ea.model.DBHandler" >
       <property name="sessionFactory" ref="sessionFactory" />

@@ -92,44 +92,80 @@
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title" id="myModalLabel">Add New Account</h4>
 		      </div>
-		      <div class="modal-body">
-		      	<div class="row">
-	        		<div class="form-group col-md-3">
-						<label class="control-label" for="accname">Name of Account:</label> 
-						<form:input type="text" path="accountname" class="form-control" id="accname" 
-							required="true" autofocus="true" />
-					</div>
-						<%-- <div class="form-group col-xs-6 col-md-3 ${status.error ? 'has-error' : ''}"> --%>
-					<div class="form-group col-md-3">
-						<label class="control-label" for="type">Account type</label> 
-						<form:select path="type" id="type" class="form-control">
-							<form:option value="facebook">Facebook</form:option>
-							<form:option value="twitter">Twitter</form:option>
-						</form:select> 
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col-md-3">
-						<label class="control-label" for="usr">Username:</label> 
-						<form:input path="username" type="text" class="form-control" id="usr" />
-					</div>
-					<div class="form-group col-md-3">
-						<label for="pwd">Password:</label> 
-						<form:input path="password" type="password" class="form-control" id="pwd" />
-					</div>
-				</div>
-				<div class="form-horizontal">
-					<div class="form-group">
-						<div class="col-md-6">
-							<form:textarea path="notes" class="form-control" rows="3" placeholder="Notes" />
+		       <div class="modal-body">
+		       <div class="tabbable"> <!-- Only required for left/right tabs -->
+          		<ul class="nav nav-tabs">
+          			<li class="active">
+          				<a class="tab1" href="#tab1" data-toggle="tab">Tab 1</a>
+          			</li>
+            		<li>
+            			<a href="#tab2" data-toggle="tab">Tab 2</a>
+            		</li>
+          		</ul>
+          		<div class="tab-content">
+	            	<div class="tab-pane active" id="tab1">
+				      	<div class="row">
+				      		<div class="form-group col-md-3">
+								<label class="control-label" for="type">Account type</label> 
+								<form:select path="type" id="type" class="form-control">
+									<form:option value="facebook">Facebook</form:option>
+									<form:option value="twitter">Twitter</form:option>
+								</form:select> 
+							</div>
+			        		<div class="form-group col-md-3">
+								<label class="control-label" for="accname">Account name:</label> 
+								<form:input type="text" path="accountname" class="form-control" id="accname" 
+									required="true" autofocus="true" />
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="usr">Username or Email:</label> 
+								<form:input path="username" type="text" class="form-control" id="usr" />
+							</div>
+						</div>
+						<div class="form-horizontal">
+							<div class="form-group">
+								<div class="col-md-6">
+									<form:textarea path="notes" class="form-control" rows="3" placeholder="Notes" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+		        			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      			</div>
+					</div> <!-- Fine Primo tab Form -->
+					<div class="tab-pane" id="tab2">
+					<!-- <input id="clickMe" class="btn btn-primary" type="button" value="clickme" onclick="onClickMethod(val,viewDiv);" /> -->
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label class="control-label" for="pwdGen">Password Generator</label> 
+							<form:select path="passwordGen" id="pwdGen" class="form-control" onchange="passwordGenCopy()">
+	   							<form:option value="NONE" label="--- Select ---"/>
+	   							<form:options items="${pwdList}" />
+							</form:select>
 						</div>
 					</div>
-				</div>
+					<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label" for="pwd">Password:</label> 
+								<form:input path="password" type="password" class="form-control" id="pwd" />
+							</div>
+					</div>
+						<div id="demoP">
+						</div>
+						
+						<!-- <div id="viewDiv">
+							Pass: <input type="text" id="myText" value="Mickey">
+						</div> -->
+						<div class="modal-footer">
+		        			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        			<input type="submit" class="btn btn-primary" value="Save" /> 
+		      			</div>
+					</div> <!-- Fine Secondo tab Form -->
 		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <input type="submit" class="btn btn-primary" value="Save" /> 
-		      </div>
+	      	 </div>
+	         </div>
+		      
+		     
 		    </div>
 		  </div>
 		</div>
@@ -160,6 +196,6 @@
 	<script src="/resources/js/scriptuserhome.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="/resources/lib/bootstrap3/js/bootstrap.min.js"></script>
-
+	<script src="/resources/js/scripts.js"></script>
 </body>
 </html>

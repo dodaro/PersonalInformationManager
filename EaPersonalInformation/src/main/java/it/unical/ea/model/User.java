@@ -20,11 +20,9 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
-import it.unical.ea.validator.*;
 
 //@FieldMatch.List({
 //    @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),

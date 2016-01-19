@@ -1,9 +1,7 @@
 package it.unical.ea;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -20,17 +18,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 
-import it.unical.ea.SessionHandler;
 import it.unical.ea.model.Account;
-import it.unical.ea.model.LoginBean;
-import it.unical.ea.model.PassHasher;
 import it.unical.ea.model.PwdGen;
 import it.unical.ea.model.User;
 import it.unical.ea.model.dao.AccountDao;
 import it.unical.ea.model.dao.UserDao;
-import it.unical.ea.validator.ValidatorUserPassEmail;
 
 /**
  * Handles requests for the application home page.
@@ -46,6 +42,17 @@ public class UserHomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	private HashMap<String, String> initPassworList(){
+		PwdGen pwds = new PwdGen();
+		HashMap<String, String> pwdChooser = new HashMap<String, String>();
+		
+		pwdChooser.put(pwds.onlyletters(), "Letters Only");
+		pwdChooser.put(pwds.onlylettersandnumbers(), "Letters and Digits");
+		pwdChooser.put(pwds.letNumSpecialChar(), "Letters Digits Special ");
+		
+		return  pwdChooser;
+	}
+	
 	@RequestMapping(value = "/userhome", method = RequestMethod.GET)
 	public String userhome(Locale locale, Model model, HttpServletRequest request, HttpSession session) {
 		logger.info("Welcome HomeUser", locale);
@@ -59,6 +66,7 @@ public class UserHomeController {
 		String userName = user.getFirstname() + " " + user.getLastname();
 		model.addAttribute("username", userName);
 		model.addAttribute("accountForm", new Account());
+		model.addAttribute("pwdList", initPassworList());
 		return "userhome";
 	}
 	
@@ -85,6 +93,7 @@ public class UserHomeController {
 			return "userhome";
 		}
 
+		@SuppressWarnings("rawtypes")
 		Enumeration prova = request.getAttributeNames();
 		System.out.println("request Start");
 		while(prova.hasMoreElements()) {
@@ -92,6 +101,7 @@ public class UserHomeController {
 		}
 		
 		
+		@SuppressWarnings("rawtypes")
 		Enumeration provasession = session.getAttributeNames();
 		System.out.println("session Start");
 		while(provasession.hasMoreElements()) {
@@ -117,7 +127,7 @@ public class UserHomeController {
 		} else {
 			accountDao.create(accountNew);
 			model.addAttribute("css", "success");
-			model.addAttribute("msg", "Account addedd correctly.");
+			model.addAttribute("msg", "Account added correctly.");
 			model.addAttribute("accountForm", new Account());
 			
 			myAccounts = userDao.getAccounts(user);
@@ -130,6 +140,30 @@ public class UserHomeController {
 		
 		
 
+	}
+	
+//	@RequestMapping(value = "/userhome/getTags", method = RequestMethod.POST) 
+//	@ResponseBody  public  String getTags(@RequestParam("tagName") String tagName) {
+//	        logger.info("Procedura strana");
+//			PwdGen pwdGen = (PwdGen) context.getBean("pwdGen");
+//	       
+//	        String genPass = pwdGen.onlyletters();
+//	        
+//	        return genPass;  
+//	 }
+	
+	@RequestMapping(value = "/userhome/getTags", method = RequestMethod.POST)
+	@ResponseBody public String getTags(@RequestParam("tagName") String tagName) {
+	
+		System.out.println("Value from Ajax request" + tagName);
+	
+		if(tagName!=null){
+			System.out.println("tagName is not null" + tagName);
+		}
+		PwdGen pwdGen = (PwdGen) context.getBean("pwdGen");
+	    String genPass = pwdGen.onlyletters();
+	    
+	    return genPass; 
 	}
 	
 	

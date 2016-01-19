@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 public class PwdGen {
 	private String password;
-	SecureRandom random = new SecureRandom();
+	private SecureRandom random = new SecureRandom();
 
 	public PwdGen() {
 	}
@@ -19,25 +19,23 @@ public class PwdGen {
 			buffer.append(alphabet[random.nextInt(alphabet.length)]);
 		}
 
-		password = buffer.toString();
-		return password;
+		return buffer.toString();
 	}
 	
 	public String onlylettersandnumbers() {
-		StringBuffer buffern = new StringBuffer();
-		int lengthn = (int) ((Math.random()*50)+4);
-		String allowedCharactersn = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		char[] alphabetn = allowedCharactersn.toCharArray();
+		StringBuffer buffer = new StringBuffer();
+		int length = (int) ((Math.random()*50)+4);
+		String allowedCharacters = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		char[] alphabet = allowedCharacters.toCharArray();
 
-		for (int i = 0; i < lengthn; i++) {
-			buffern.append(alphabetn[random.nextInt(alphabetn.length)]);
+		for (int i = 0; i < length; i++) {
+			buffer.append(alphabet[random.nextInt(alphabet.length)]);
 		}
 
-		password = buffern.toString();
-		return password;
+		return buffer.toString();
 	}
 	
-	public String LetNumSpecialChar() {
+	public String letNumSpecialChar() {
 		StringBuffer buffern = new StringBuffer();
 		int lengthn = (int) ((Math.random()*50)+4);
 		String allowedCharactersn = "~!@#$%^&*()`_-+=/.,><;][{}1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -47,9 +45,18 @@ public class PwdGen {
 			buffern.append(alphabetn[random.nextInt(alphabetn.length)]);
 		}
 
-		password = buffern.toString();
+		return buffern.toString();
+	}
+	
+	
+	public String getPassword() {
 		return password;
 	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		return "password: " + password;

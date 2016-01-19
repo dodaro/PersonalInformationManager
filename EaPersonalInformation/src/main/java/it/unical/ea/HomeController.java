@@ -45,11 +45,11 @@ public class HomeController {
 
 		model.addAttribute("userLogin", new LoginBean());
 		
-		PwdGen mypass = context.getBean("passGen", PwdGen.class);
+		PwdGen mypass = context.getBean("pwdGen", PwdGen.class);
 		
 		logger.info("Generated password: " + mypass.onlyletters());
 		logger.info("Generated password: " + mypass.onlylettersandnumbers());
-		logger.info("Generated password: " + mypass.LetNumSpecialChar());
+		logger.info("Generated password: " + mypass.letNumSpecialChar());
 		return "home";
 	}
 	

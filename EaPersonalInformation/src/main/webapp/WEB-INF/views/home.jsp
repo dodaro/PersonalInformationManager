@@ -101,5 +101,6 @@
 	<script src="/resources/lib/bootstrap3/jquery/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="/resources/lib/bootstrap3/js/bootstrap.min.js"></script>
+	<script src="/resources/js/scripts.js" type="text/javascript"></script>
 </body>
 </html>

@@ -55,7 +55,6 @@ public class UserDaoImpl implements UserDao {
 		return retrieveEmail(email) != null;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Account> getAccounts(User user) {
 		Session session = dbHandler.getSessionFactory().openSession();

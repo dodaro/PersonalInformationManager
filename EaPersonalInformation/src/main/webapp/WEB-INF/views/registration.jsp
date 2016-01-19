@@ -219,5 +219,6 @@
 	<script src="/resources/lib/bootstrap3/datepicker/js/bootstrap-datepicker.min.js"></script>
 	<script src="/resources/lib/bootstrap3/datepicker/locales/bootstrap-datepicker.it.min.js"></script>
 	<script src="/resources/js/scripts.js"></script>
+	<script src="/resources/js/datescripts.js"></script>
 </body>
 </html>

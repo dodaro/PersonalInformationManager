@@ -1,6 +1,7 @@
 package it.unical.ea.model;
 
 public class LoginBean {
+	
 	private String email;
 
 	private String password;

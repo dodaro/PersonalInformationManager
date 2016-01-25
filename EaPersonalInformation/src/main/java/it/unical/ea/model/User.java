@@ -24,10 +24,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-//@FieldMatch.List({
-//    @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-//    @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
-//})
+
 @Entity
 @Table(name="users")
 public class User {
@@ -42,7 +39,6 @@ public class User {
 	@Email()
 	@NotEmpty()
 	private String email;
-	//@Unique(service = UserService.class, fieldName = "email", message = "Email already exists!!!")
 	
 	@Size(max=50)
 	@Email()

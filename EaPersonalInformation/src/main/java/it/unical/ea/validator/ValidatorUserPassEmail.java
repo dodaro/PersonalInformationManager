@@ -10,16 +10,10 @@ import it.unical.ea.model.User;
 import it.unical.ea.model.dao.UserDao;
 
 public class ValidatorUserPassEmail implements Validator {
-	
-//	@Autowired
-//	private ApplicationContext context;
-//	
-//    UserDao userDao;
 
 
 	public ValidatorUserPassEmail() {
-/*		userDao = (UserDao) context.getBean("userDao");
-		System.out.println(userDao.numberOfUsers());*/
+
 	}
 
 	@Override

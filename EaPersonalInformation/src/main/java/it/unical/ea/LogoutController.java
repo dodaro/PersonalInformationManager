@@ -45,7 +45,8 @@ public class LogoutController {
 			session.removeAttribute("user");
 			}
 		session.invalidate();
-		return "logout";
+		model.addAttribute("logOut", true);
+		return "home";
 	}
 	
 	

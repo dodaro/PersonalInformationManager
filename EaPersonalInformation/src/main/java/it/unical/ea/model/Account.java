@@ -35,8 +35,6 @@ public class Account {
 	@Size(min = 6, max = 64)
 	private String password;
 	
-	private String passwordGen;
-	
 	@Column(name="notes")
 	@Size(max = 512)
 	private String notes;
@@ -45,12 +43,12 @@ public class Account {
 	@JoinColumn(name = "user")
 	private User user;
 
-	public Account(Integer id, String type, String username, String password, String passwordGen, User user) {
+	public Account(Integer id, String type, String accountname, String username, String password, User user) {
 		this.id = id;
 		this.type = type;
 		this.username = username;
+		this.accountname = accountname;
 		this.password = password;
-		this.passwordGen = passwordGen;
 		this.user = user;
 	}
 
@@ -58,8 +56,8 @@ public class Account {
 		this.id = 0;
 		this.type = "";
 		this.username = "";
+		this.accountname = "";
 		this.password = "";
-		this.passwordGen = "";
 		this.user = null;
 	}
 
@@ -118,14 +116,6 @@ public class Account {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-	
-	public String getPasswordGen() {
-		return passwordGen;
-	}
-
-	public void setPasswordGen(String passwordGen) {
-		this.passwordGen = passwordGen;
 	}
 	
 	@Override

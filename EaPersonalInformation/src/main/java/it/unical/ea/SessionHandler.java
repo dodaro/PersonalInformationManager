@@ -10,12 +10,4 @@ public class SessionHandler {
 		return user != null;
 	}
 	
-//	public static Car getPurchase(HttpSession session) {
-//		Car car = (Car) session.getAttribute("purchase");
-//		if(car == null) {
-//			car = new Car();
-//			session.setAttribute("purchase", car);
-//		}		
-//		return car;
-//	}
 }

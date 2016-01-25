@@ -1,7 +1,5 @@
 package it.unical.ea;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,11 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 
-import it.unical.ea.SessionHandler;
 import it.unical.ea.model.LoginBean;
 import it.unical.ea.model.PassHasher;
-import it.unical.ea.model.PwdGen;
-import it.unical.ea.model.User;
 import it.unical.ea.model.dao.UserDao;
 
 /**
@@ -65,18 +60,7 @@ public class LoginController {
 		request.getSession().setAttribute("user", userLogin.getEmail());		
 		
 		
-		return "redirect:/userhome";
-		
-		
-//		if (userLogin.getEmail().equals(user.getEmail()) && userLogin.getPassword().equals(user.getPassword())) {
-//			request.getSession().setAttribute("userSession", userLogin.getEmail());
-//			return "redirect:/userhome";
-//		} else {
-//			model.addAttribute("userexerror", "true");
-//			model.addAttribute("userLogin", new LoginBean());
-//			return "login";
-//		}
-		
+		return "redirect:/userhome";	
 	
 	}
 }

@@ -71,10 +71,10 @@
 				</p>
 					<ul id="autList" class="list-unstyled">
 						<strong>
+							<li>Mohamed Osman</li>
+							<li>Bilal Khan</li>
+							<li>Mostafa Alishahi</li>
 							<li>Arturo Guerrisi</li>
-							<li>You</li>
-							<li>Somebody</li>
-							<li>Everybody</li>
 						</strong>
 					</ul>
 		</div> 
@@ -82,13 +82,7 @@
 		<hr>
 	</div> 	 
 				<!--	/container -->
-<!--
-	<div class="container">
-		 Example row of columns 
-		<hr>
-		</div>	
--->
-	<!-- /container -->
+
 
 		<footer class="footer">
       <div class="container">
@@ -96,6 +90,22 @@
       </div>
     </footer>
 	
+	<div class="modal fade" id="mLogOut" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	    <div class="modal-header">
+		 	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>       
+		</div>
+		<h3 class="text-center">
+	      Logged out
+	    </h3>
+	    
+	    <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+		</div>
+		</div>
+	  </div>
+	</div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/resources/lib/bootstrap3/jquery/jquery.min.js"></script>
@@ -103,4 +113,10 @@
 	<script src="/resources/lib/bootstrap3/js/bootstrap.min.js"></script>
 	<script src="/resources/js/scripts.js" type="text/javascript"></script>
 </body>
+<c:if test="${logOut}">
+		<script>
+        	/* alert("Calling my function ..."); */
+        	$('#mLogOut').modal('show');
+        </script>
+</c:if>
 </html>

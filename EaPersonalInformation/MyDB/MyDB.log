@@ -1,8 +1,0 @@
-/*C1*/SET SCHEMA SYSTEM_LOBS
-INSERT INTO BLOCKS VALUES(0,2147483647,0)
-COMMIT
-/*C2*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C3*/SET SCHEMA PUBLIC
-drop table user if exists
-create table user (email varchar(50) not null, creditcard varchar(20), dateOfBirth date not null, firstname varchar(20) not null, gender varchar(5) not null, lastname varchar(20) not null, password varchar(50) not null, phonenumber varchar(20), primary key (email))

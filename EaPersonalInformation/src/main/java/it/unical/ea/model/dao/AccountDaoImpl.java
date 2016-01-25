@@ -70,14 +70,26 @@ public class AccountDaoImpl implements AccountDao {
 	
 	
 	@Override
-	public Account get(Integer id) {
+	public Account getAccount(Integer id) {
 		Session session = dbHandler.getSessionFactory().openSession();
-		String queryString = "from Account a where a.id = :id_account";
+		String queryString = "from Account where id = :id_account";
 		Query query = session.createQuery(queryString);
 		query.setParameter("id_account", id);
 		Account a = (Account) query.uniqueResult();
 		session.close();
 		return a;
+	}
+	
+	
+	@Override
+	public void deleteFromId(Integer id) {
+		Session session = dbHandler.getSessionFactory().openSession();
+		String queryString = "from Account a where a.id = :id_account";
+		Query query = session.createQuery(queryString);
+		query.setParameter("id_account", id);
+		Account a = (Account) query.uniqueResult();
+		dbHandler.delete(a);
+		session.close();	
 	}
 	
 	@Override

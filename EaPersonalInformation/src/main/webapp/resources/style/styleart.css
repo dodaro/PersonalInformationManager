@@ -182,6 +182,10 @@ fieldset.fsStyle {
 	
 }
 
+.table td {
+   text-align: center;   
+}
+
 .form-register .row {
 /*	margin-bottom: -px;*/
 /*	border: 1px solid green;*/

@@ -8,7 +8,7 @@ public interface AccountDao {
 	
 	void create(Account account);
 
-	Account get(Integer id);
+	Account getAccount(Integer id);
 
 	Account getAccount(String accountname);
 	
@@ -21,6 +21,8 @@ public interface AccountDao {
 	int numberOfAccounts();
 
 	List<Account> getAccounts();
+	
+	void deleteFromId(Integer id);
 	
 	List<Account> getUserAccounts(User user);
 }

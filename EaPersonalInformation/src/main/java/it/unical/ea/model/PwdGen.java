@@ -21,9 +21,6 @@ public class PwdGen {
 		this.word2 = "";
 	}
 	
-//	public static boolean validatePassword(String password) {
-//		return (password != null && password.matches(VALID_PASSWORD_REGEX));
-//		}
 	
 	private String onlyletters() {
 		StringBuffer buffer = new StringBuffer();
@@ -66,17 +63,30 @@ public class PwdGen {
 	}
 	
 	private String twoWords(String word1,String word2) {
-		  StringBuffer buffer = new StringBuffer();
-		  int length = (int) ((Math.random()*50)+4);
-		  String allowedCharacters = "~!@#$%^&*()`_-+=/.,><;][{}1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		  char[] alphabet = allowedCharacters.toCharArray();
+	    StringBuffer buffer = new StringBuffer();
+	    int length = (int) ((Math.random()*50)+4);
+	    String allowedCharacters = "~!@#$%^&*()`_-+=/.,><;][{}1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    char[] alphabet = allowedCharacters.toCharArray();
 
-		  for (int i = 0; i < length; i++) {
-		   buffer.append(alphabet[random.nextInt(alphabet.length)]);
-		  }
-
-		  return word1 + buffer.toString() + word2;
-	}
+	    for (int i = 0; i < length; i++) {
+	     buffer.append(alphabet[random.nextInt(alphabet.length)]);
+	    }
+	    
+	    if(length%6==0)
+	     return word1 + buffer.toString() + word2;
+	    else if(length%6==1)
+	     return word2  +  buffer.toString() + word1;
+	    else if(length%6==2)
+	     return word1  +   word2 + buffer.toString() ;
+	    else if(length%6==3)
+	     return word2  +   word1 + buffer.toString() ;
+	    else if(length%6==4)
+	     return buffer.toString() + word1  +   word2  ;
+	    else if(length%6==5)
+	     return buffer.toString() + word2  +   word1  ;
+	    else
+	     return  word1 + buffer.toString() + word2;
+	 }
 	
 	
 	public String getPwdLett() {

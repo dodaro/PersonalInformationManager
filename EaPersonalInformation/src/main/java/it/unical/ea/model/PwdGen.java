@@ -11,7 +11,8 @@ public class PwdGen {
 	private String word1;
 	private String word2;
 	
-
+	  private static final String VALID_PASSWORD_REGEX = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&@#$%=:\\?]).{4,50})";
+	  private static final String allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public PwdGen() {
 		this.pwdLett = onlyletters();
 		this.pwdLettNum = onlylettersandnumbers();
@@ -24,7 +25,7 @@ public class PwdGen {
 	private String onlyletters() {
 		StringBuffer buffer = new StringBuffer();
 		int length = (int) ((Math.random()*50)+4);
-		String allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		//String allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		char[] alphabet = allowedCharacters.toCharArray();
 
 		for (int i = 0; i < length; i++) {
@@ -131,5 +132,7 @@ public class PwdGen {
 	public String toString() {
 		return "password: " + pwdLett + pwdLettNum + pwdLettNumSpec + pwdTwoWords;
 	}
-
+	  public static boolean validatePassword(String password) {
+	        return (password != null && password.matches(VALID_PASSWORD_REGEX));
+	    }
 }
